@@ -39,6 +39,11 @@ with st.sidebar:
     slider_fuel = st.number_input(label = 'fuel_consumption_comb_(l/100_km)')
 
     dropdown = st.selectbox(options=['E', 'Z', 'D','X','N'], label='fuel_type')
+    st.markdown('* D: Diesel')
+    st.markdown('* E: Ethanol')
+    st.markdown('* X: Regular gasoline')
+    st.markdown('* N: Natural gas')
+    st.markdown('* Z: Premium gasoline')
 
 # creat a dict
 
@@ -62,6 +67,13 @@ def create_feature_matrix(slider_engine, slider_cylinder,slider_fuel, dropdown):
 def predict_carbon():
     feature_matrix = create_feature_matrix(slider_engine, slider_cylinder,slider_fuel, dropdown)
     prediction = rf.predict(feature_matrix)
-    st.text(f"Estimated Co2 emissions is : {prediction:} (g/km)")
+    if prediction <= 100:
+        st.markdown(f"Estimated Co2 emissions is : :green[{prediction:} (g/km)]")
+    elif prediction <= 150:
+        st.markdown(f"Estimated Co2 emissions is : :blue[{prediction:} (g/km)]")
+    elif prediction > 150 and prediction <= 255:
+        st.markdown(f"Estimated Co2 emissions is : :orange[{prediction:} (g/km)]")
+    elif prediction > 255:
+        st.markdown(f"Estimated Co2 emissions is : :red[{prediction:} (g/km)]")
 
 button = st.button(label="Predict carbon emissions",on_click=predict_carbon)
