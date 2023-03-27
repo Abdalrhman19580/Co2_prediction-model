@@ -1,10 +1,12 @@
 import streamlit as st
 import pandas as pd
+import pickle
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor  # Random forest for regression
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.metrics import  mean_squared_error, mean_absolute_error,r2_score  # Metrics to use for evaluation
 from sklearn.model_selection import  train_test_split # Split arrays or matrices into random train and test subsets.
+rf = pickle.load(open('final_model.sav', 'rb'))
 cars = pd.read_csv('co2_emissions_canada.csv')
 cars.rename(columns = lambda x : x.lower().replace(" ", "_"),inplace = True)
 cars['co2_emissions(g/km)'] = cars['co2_emissions(g/km)'].astype(float)
