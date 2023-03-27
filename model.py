@@ -32,9 +32,9 @@ st.caption('The data comes from DataCamp competition: Everyone can learn python.
 st.caption('the purpose of this app is to use the interactive UI to make prediction about carbon emissions and to help comapanies understand how to make more friendly vehicles')
 st.markdown('Link to my [EDA and Model](https://app.datacamp.com/workspace/w/f885974b-5e59-4465-b2a1-4377297b0e50) on DataCamp')
 with st.sidebar:
-    slider_engine = st.number_input( label = 'engine_size(l)')
-
-    slider_cylinder = st.number_input( label = 'cylinders')
+    slider_engine = st.slider(label = 'engine_size(l)', min_value=0.0, max_value=10.0, step=0.1)
+    
+    slider_cylinder = st.slider( label = 'cylinders', min_value=0, max_value=10, step=1 )
 
     slider_fuel = st.number_input(label = 'fuel_consumption_comb_(l/100_km)')
 
