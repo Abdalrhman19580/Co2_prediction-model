@@ -57,4 +57,4 @@ def predict_carbon():
         st.markdown(f"Estimated Co2 emissions is : :orange[{prediction:} (g/km)]")
     elif prediction > 255:
         st.markdown(f"Estimated Co2 emissions is : :red[{prediction:} (g/km)]")
-   button = st.button(label="Predict carbon emissions",on_click=predict_carbon)
+button = st.button(label="Predict carbon emissions",on_click=predict_carbon)
