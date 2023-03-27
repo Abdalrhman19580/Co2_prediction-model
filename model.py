@@ -26,8 +26,6 @@ y = cars_ml['co2_emissions(g/km)']
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
-rf = RandomForestRegressor()
-rf.fit(X_train, y_train)
 
 st.header('Co2 emissions prediction')
 st.caption('The data comes from DataCamp competition: Everyone can learn python.')
