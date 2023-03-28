@@ -21,11 +21,7 @@ with st.sidebar:
     slider_cylinder = st.slider( label = 'cylinders', min_value=0, max_value=10, step=1 )
 
     slider_fuel = st.number_input(label = 'fuel_consumption_comb_(l/100_km)')
-    dropdown2 = st.selectbox(options=['COMPACT', 'FULL-SIZE', 'MID-SIZE', 'MINICOMPACT', 'MINIVAN',
-       'PICKUP TRUCK - SMALL', 'PICKUP TRUCK - STANDARD',
-       'SPECIAL PURPOSE VEHICLE', 'STATION WAGON - MID-SIZE',
-       'STATION WAGON - SMALL', 'SUBCOMPACT', 'SUV - SMALL',
-       'SUV - STANDARD', 'TWO-SEATER', 'VAN - CARGO', 'VAN - PASSENGER'], label='vehicle_class')
+    
     dropdown = st.selectbox(options=['E', 'Z', 'D','X','N'], label='fuel_type')
     st.markdown('* D: Diesel')
     st.markdown('* E: Ethanol')
@@ -42,17 +38,13 @@ def create_feature_matrix(slider_engine, slider_cylinder,slider_fuel, dropdown):
     data['cylinders'] = slider_cylinder
     data['fuel_type'] = dropdown
     data['fuel_consumption_comb_(l/100_km)'] = slider_fuel
-    data['vehicle_class'] = dropdown2
     df = pd.DataFrame(data, index=[0])
     ohe_1 = OneHotEncoder(handle_unknown = 'ignore')
     ohe_1.fit(cars[['fuel_type']])
     transformed_1 = ohe_1.transform(df[['fuel_type']])
-    ohe_2 = OneHotEncoder(handle_unknown = 'ignore')
-    ohe_2.fit(cars[['vehicle_class']])
-    transformed_2 = ohe_2.transform(df[['vehicle_class']])
     df[ohe_1.categories_[0]] = transformed_1.toarray()
-    df[ohe_2.categories_[0]] = transformed_2.toarray()
-    df.drop(['fuel_type','vehicle_class'], axis = 1, inplace=True)
+    
+    df.drop(['fuel_type'], axis = 1, inplace=True)
     return df
 
 def predict_carbon():
