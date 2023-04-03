@@ -18,7 +18,7 @@ st.markdown('Link to my [EDA and Model](https://app.datacamp.com/workspace/w/f88
 with st.sidebar:
     slider_engine = st.slider(label = 'engine_size(l)', min_value=0.0, max_value=10.0, step=0.1)
     
-    slider_cylinder = st.slider( label = 'cylinders', min_value=0, max_value=10, step=1 )
+    slider_cylinder = st.slider( label = 'cylinders', min_value=0, max_value=16, step=1 )
 
     slider_fuel = st.number_input(label = 'fuel_consumption_comb_(l/100_km)')
     
