@@ -1,0 +1,5 @@
+﻿carbon emissions g/km,category
+<= 100,Very low
+>100 & <= 150,Low
+> 150 & <= 255,High
+> 255,Very high
