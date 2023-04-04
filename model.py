@@ -74,6 +74,7 @@ with tab3:
 
 
 with st.sidebar:
+    st.header("Co2 prediction based on your consumption. check it now!")
     slider_engine = st.slider(label = 'engine_size(l)', min_value=0.0, max_value=10.0, step=0.1)
     
     slider_cylinder = st.slider( label = 'cylinders', min_value=0, max_value=16, step=1 )
