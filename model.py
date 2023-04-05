@@ -72,7 +72,7 @@ with tab3:
         st.markdown(f"#### Here's a list of the fuel efficient models from {company_filter}   {vehicle_filter_3}")
         suggest = cars[(cars['make'] == company_filter) & (cars['vehicle_class'] == vehicle_filter_3) & (cars['fuel_consumption_comb_(l/100_km)'] < 13.0) ]
         suggest = suggest.drop(columns = ['make', 'vehicle_class'])
-        suggest = suggest.drop_duplicates(subset=['model']
+        suggest = suggest.drop_duplicates(subset=['model'])
         st.table(suggest)
 
 
