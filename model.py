@@ -10,7 +10,6 @@ rf = pickle.load(open('final_model.sav', 'rb'))
 cars = pd.read_csv('co2_emissions_canada.csv')
 cars.rename(columns = lambda x : x.lower().replace(" ", "_"),inplace = True)
 cars['co2_emissions(g/km)'] = cars['co2_emissions(g/km)'].astype(float)
-cars.drop(columns= ['model', 'transmission'], inplace = True)
 cars.drop_duplicates(inplace= True)
 
 st.set_page_config(layout="wide")
