@@ -69,7 +69,11 @@ with tab3:
         green = pd.read_csv('green.csv')
         st.table(green)
    
-
+    with st.container():
+        st.markdown(f"#### Here's a list of the fuel efficient models from {company_filter}   {vehicle_filter_3}")
+        suggest = cars[(cars['make'] == company_filter) & (cars['vehicle_class'] == vehicle_filter_3) & (cars['fuel_consumption_comb_(l/100_km)'] < 13.0) ]
+        suggest = suggest.drop(columns = ['make', 'vehicle_class'])
+        st.table(suggest)
 
 
 
